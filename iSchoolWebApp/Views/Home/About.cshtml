@@ -1,0 +1,16 @@
+﻿@model iSchoolWebApp.Models.AboutRootModel;
+@{
+    ViewData["Title"] = Model.Title;
+}
+<style>
+    .about {
+        border-color: white;
+    }
+</style>
+<img src="~/BannerImageP3.png" alt="tiger on the right, code on the left" style="width:100%; height:500px;"/>
+<h1><i class="fa-regular fa-pen-to-square"></i> @Model.About.title</h1>
+<section class="about">
+    <p>@Model.About.description</p>
+    <p><i>@Model.About.quote</i></p>
+    <p><b>--- @Model.About.quoteAuthor ---</b></p>
+</section>

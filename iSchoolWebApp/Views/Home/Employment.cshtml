@@ -1,0 +1,76 @@
+﻿@model iSchoolWebApp.Models.Employment.EmployRoot;
+@{
+    ViewData["Title"] = "Employment and Cooperative Education";
+}
+<style>
+    /* Changed background of a container to white to make data table visible*/
+    .container {
+        background-color: white;
+        color: black;
+    }
+    p {
+        color:black;
+    }
+</style>
+
+@foreach (var content in Model.contentInfo)
+            {
+                <h3>@content.title</h3>
+                <p>@content.description</p>
+            }
+<h1>Employment Table</h1>
+<div class="container">
+    <div class="row">
+        <table id="emptTable" class="display" style="width:100%">
+            <thead class="dataTable">
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
+            <tbody class="dataTable">
+                @foreach (var emp in Model.EmploymentTableInfo)
+                {
+                <tr>
+                    <td>@emp.employer</td>
+                    <td>@emp.degree</td>
+                    <td>@emp.city</td>
+                    <td>@emp.startDate</td>
+                    <td>@emp.title</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr />
+<h1>Co-op Table</h1>
+<div class="container">
+    <div class="row">
+        <table id="co-op" class="display" style="width:100%">
+            <thead class="dataTable">
+                <tr>
+                    <th>Employer</th>
+                    <th>Degree</th>
+                    <th>City</th>
+                    <th>Term</th>
+                </tr>
+            </thead>
+            <tbody class="dataTable">
+                @foreach (var coo in Model.CoopTableInfo)
+                {
+                    <tr>
+                        <td>@coo.employer</td>
+                        <td>@coo.degree</td>
+                        <td>@coo.city</td>
+                        <td>@coo.term</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

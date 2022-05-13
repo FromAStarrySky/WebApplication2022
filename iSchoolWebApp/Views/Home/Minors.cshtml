@@ -1,0 +1,44 @@
+﻿@model iSchoolWebApp.Models.MinorsRootModel;
+@{ ViewData["Title"] = Model.Title; }
+
+<h1>@Model.Title</h1>
+
+<p>
+    Rochester Institute of Technology provides students pursuing a bachelor's degree,
+    an option of completing a minor which can complement a student's major, help them develop
+    another area of professional expertise, or enable them to pursue an area of personal interest
+    .<br />
+    Completion of a minor is formally designated on the baccalaureate transcript, which serves to highlight this
+    accomplishment to employers and graduate schools.
+
+    The minors provided by iSchool are listed below. If you want to see a full list of minors and immersions from every department,
+    <b><a href="https://www.rit.edu/study/immersions-and-minors">this list can be found in here.</a></b>
+</p>
+<div id="accordion-minor">
+    @foreach (var minors in Model.UgMinors)
+    {
+<h3>
+    <i class="fa-solid fa-award"></i>  @minors.title
+</h3>
+                <div>
+                    <p>
+                        @minors.description
+                    </p>
+                    <p>
+                        <b>The following courses you need to take for this minor:</b>
+                    </p>
+                        <ul class="listCourse">
+                        @foreach (var courseName in @minors.courses)
+                        {
+                                <li>@courseName</li>
+                        }
+                        </ul>
+                    <i>@minors.note</i>
+
+                    </div>
+}
+
+</div>
+
+
+

@@ -1,0 +1,73 @@
+﻿@model iSchoolWebApp.Models.Degree.DegreeRootModel;
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>Degree Programs</h1>
+
+<section id="undergrad">
+    <h3>Undergraduate Degrees</h3>
+    <p>Home to the college’s Bachelor of Science degrees in computing and information technologies, human-centered computing, and web and mobile computing, the iSchool comprises the “full stack” computing knowledge that prepares professionals working on both the front- and back-end of the user experience.</p>
+    <div id="accordion-under">
+    @foreach (var under in Model.undergraduate)
+    {
+        //retrieve undergraduate degrees
+
+        <!--degree name-->
+        <h3><i class="fa-solid fa-graduation-cap"></i>  @under.title</h3>
+        <div>
+            <!--degree description-->
+            <p>
+                @under.description
+            </p>
+            <!--degree concentrations-->
+            <ul>
+                @foreach (var concentration in @under.concentrations)
+                {
+                    <li>@concentration</li>
+                }
+            </ul>
+        </div>
+    }
+    </div>
+  </section>
+
+    <hr />
+
+    <section id="grad">
+        <h3>Graduate Degrees</h3>
+        <p>A Master of Science Degree from the School of Information provides an opportunity for in-depth study to prepare for today’s high-demand computing careers. Big data is not just high transaction volumes; it is also data in various formats, with high velocity change, and increasing complexity and information delivery must be immediate and on demand.</p>
+        <div id="accordion-grad">
+            @foreach (var grad in Model.graduate)
+            {
+                //retrieve graduate degrees
+                @if (grad.degreeName != "graduate advanced certificates")
+                {
+                        <!--degree name-->
+                        <h3><i class="fa-solid fa-graduation-cap"></i>  @grad.title</h3>
+                        <div>
+                        <!--degree description-->
+                        <p>
+                            @grad.description
+
+                        <!--degree concentrations-->
+                        <p><b>Concentrations: </b>@string.Join(", ", @grad.concentrations)</p>
+                        </p>
+                    </div>
+                }
+                else
+                {
+                        
+                        <!--retrieve certificates-->
+                        <h3>Graduate Certificates</h3>
+                            <!--degree name-->
+                            <p>@string.Join("\n and ", @grad.availableCertificates)</p>
+
+                }
+
+            }
+            </div>
+    </section>
+
+
+
